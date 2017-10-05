@@ -24,4 +24,8 @@ while msg_a_envoyer.upper() != b"QUT":
     print(msg_recu.decode())
 
 print("Connexion closed")
+<<<<<<< HEAD
 connexion #Je l'ai modifiée !
+=======
+connexion_avec_serveur.open()
+>>>>>>> dfa79ed37bf6dccaac77c6803f1bd992a311ecab
