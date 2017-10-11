@@ -1,21 +1,22 @@
 import requests
-import re
+import datetime
 
 class Pollution():
 
-    def __init__(self,dict,lon,lat,dtime):
-        self.dict={}
+    def __init__(self,lon,lat):
+        self.value=''
         self.lon=lon
         self.lat=lat
-        self.dtime=dtime
 
     def retrivePollInfo(self):
-        html = 'http://api.openweathermap.org/data/2.5/uvi?' \
-               'lat={}&lon={}&appid=955716c6c3b27005023580d9021147ba'.format(self.lat,self.lon)
+        html = 'http://api.openweathermap.org/pollution/v1/co/' \
+               '{},{}/{}.json?appid=955716c6c3b27005023580d9021147ba'.format(self.lat,self.lon,datetime.datetime.now)
         client = requests.get(html)
         j = client.json()
-        self.dict = j['value']
-
-    def __str__(self):
+        self.value = j['data'][0]['value']
 
 
+if __name__ == '__main__':
+    p=Pollution(51.51,-0.13)
+    p.retrivePollInfo()
+    print(p.value)

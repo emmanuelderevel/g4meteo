@@ -2,11 +2,13 @@ import requests
 import re
 
 
-class Wheater():
+class Weather():
     def __init__(self, name, country):
         self.dict = {}
         self.country=country
         self.name=name
+        self.lon=''
+        self.lat=''
 
     def retriveWeathInfo(self):
         html = 'http://api.openweathermap.org/data/2.5/weather?' \
@@ -19,13 +21,16 @@ class Wheater():
         self.dict['humidity'] = j['main']['humidity']
         self.dict['pressure'] = j['main']['pressure']
         self.dict['wind'] = j['wind']['speed']
+        self.lon = j['coord']['lon']
+        self.lat = j['coord']['lat']
+        #self.dtime = j
 
     def __str__(self):
         return 'Informations météorologiques de la ville de Londre : {}'.format(self.dict)
 
 
 if __name__ == '__main__':
-    p=Wheater('London','uk')
+    p=Weather('London','uk')
     p.retriveWeathInfo()
     print(p.dict)
 
