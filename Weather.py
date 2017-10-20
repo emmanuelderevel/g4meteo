@@ -25,10 +25,3 @@ class Weather():
 
     def __str__(self):
         return 'Informations météorologiques de la ville de Londre : {}'.format(self.dict)
-
-
-if __name__ == '__main__':
-    p=Weather()
-    p.retriveWeathInfo()
-    print(p.dict)
-
