@@ -3,15 +3,13 @@ import requests
 import json
 from django.http import HttpResponseRedirect
 from .forms import NameForm
-import Weather
+from .weather import Weather
 
 #Afficher les données météo à partir de l'id de la ville
 def weather(request, city_id):
     weather1=Weather(city_id)
-    r = requests.get('http://api.openweathermap.org/data/2.5/weather?id={0}&units=metric&APPID=4507f11de27d6470f011743a710aed13'.format(city_id))
-    data = r.json()
-    temperature=data['main']['temp']
-    temp=str(temperature)
+    weather1.retriveWeathInfo()
+    temp=weather1.dict['temp']
     return render(request, 'city/weather.html', locals())
 
 
