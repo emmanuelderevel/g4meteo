@@ -1,18 +1,16 @@
 import requests
-import re
 
 
 class Weather():
-    def __init__(self, name, country):
+    def __init__(self, city_id):
         self.dict = {}
-        self.country=country
-        self.name=name
+        self.city_id=city_id
         self.lon=''
         self.lat=''
 
     def retriveWeathInfo(self):
         html = 'http://api.openweathermap.org/data/2.5/weather?' \
-               'q={},{}&units=metric&APPID=955716c6c3b27005023580d9021147ba'.format(self.name,self.country)
+               'id={}&units=metric&APPID=955716c6c3b27005023580d9021147ba'.format(self.city_id)
         client = requests.get(html)
         j = client.json()
         self.dict['temp'] = j['main']['temp']
@@ -30,7 +28,7 @@ class Weather():
 
 
 if __name__ == '__main__':
-    p=Weather('London','uk')
+    p=Weather()
     p.retriveWeathInfo()
     print(p.dict)
 
