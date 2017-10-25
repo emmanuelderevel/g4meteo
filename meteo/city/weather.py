@@ -24,9 +24,4 @@ class Weather():
         #self.dtime = j
 
     def __str__(self):
-<<<<<<< HEAD:Weather.py
         return 'Informations météorologiques de la ville de Londre : {}'.format(self.dict)
-=======
-        return 'Informations météorologiques de la ville de Londre : {}'.format(self.dict)
-
->>>>>>> 8467ffee59363b2e01d4f9a3403b4001c1ed5270:meteo/city/weather.py
